@@ -14,6 +14,15 @@ public struct RootView: View {
 
     public init() {}
 
+    private let editorFont: Font = .custom("SF Mono", size: 16)
+    
+    // ☑️ Note: pure `.white` is too bright.
+    private let editorFontColor: Color = .white.opacity(0.7)
+
+    private var convertedText: String {
+        sourceText.extractEnglishText()
+    }
+
     public var body: some View {
         VStack(alignment: .leading) {
             //
@@ -21,6 +30,7 @@ public struct RootView: View {
             //
             Text("Source:")
             TextEdit("Please paste source code.", text: $sourceText, font: editorFont)
+                .foregroundColor(editorFontColor)
                 .padding(.bottom)
 
             //
@@ -29,18 +39,37 @@ public struct RootView: View {
             HStack {
                 Text("Destination:")
                 Spacer()
-                Button {
-                    // TODO:
-                } label: {
+                Button(action: onTapCopyToClipboard) {
                     Label("Copy to Clipboard", symbol: "􀉄")
                 }
+                Button(action: onTapCopyToDeepL) {
+                    Label("Copy to DeepL", symbol: "􀈼")
+                }
             }
-            TextEdit(text: $destinationText, font: editorFont)
+            TextEdit(text: .constant(convertedText), font: editorFont)
+                .foregroundColor(editorFontColor)
         }
         .padding()
     }
 
-    private var editorFont: Font {
-        .custom("SF Mono", size: 16)
+    // MARK: Private
+
+    private func onTapCopyToClipboard() {
+        let text = convertedText
+        copyToPasteBoard(text)
+    }
+
+    private func onTapCopyToDeepL() {
+        let text = convertedText
+        Task {
+            copyToPasteBoard(text)
+            try! await Task.sleep(milliseconds: 100) // 💡 Deceive DeepL.
+            copyToPasteBoard(text)
+        }
+    }
+
+    private func copyToPasteBoard(_ text: String) {
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
     }
 }
