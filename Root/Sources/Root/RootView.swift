@@ -5,8 +5,8 @@
 //  Created by Yusuke Hosonuma on 2022/03/28.
 //
 
-import SwiftUI
 import SFReadableSymbols
+import SwiftUI
 
 public struct RootView: View {
     @State var sourceText: String = ""
@@ -39,7 +39,7 @@ public struct RootView: View {
         }
         .padding()
     }
-    
+
     private var editorFont: Font {
         .custom("SF Mono", size: 16)
     }

@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Yusuke Hosonuma on 2022/03/28.
 //
@@ -13,13 +13,13 @@ public struct TextEdit: View {
 
     private let placeHolder: String?
     private let font: Font
-    
+
     public init(_ placeHolder: String? = nil, text: Binding<String>, font: Font) {
         self.placeHolder = placeHolder
-        self._text = text
+        _text = text
         self.font = font
     }
-    
+
     public var body: some View {
         ZStack(alignment: .topLeading) {
             Group {
@@ -34,7 +34,7 @@ public struct TextEdit: View {
             .font(font)
         }
     }
-    
+
     private var padding: EdgeInsets {
         #if os(macOS)
         EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0)
