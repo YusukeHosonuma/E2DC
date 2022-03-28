@@ -54,4 +54,48 @@ final class StringExtensionTests: XCTestCase {
             "performing localization:"
         )
     }
+    
+    func testExample4() throws {
+        let s = """
+        /// Unregister the given factory closure with given key.
+        ///
+        /// - note: This method is thread-safe.
+        /// - parameter componentPath: The dependency graph path of the component
+        /// the provider is for.
+        """
+        
+        XCTAssertEqual(
+            s.extractEnglishText(),
+            "Unregister the given factory closure with given key." +
+            "\n\n" +
+            "- note: This method is thread-safe.\n" +
+            "- parameter componentPath: The dependency graph path of the component the provider is for."
+        )
+    }
+    
+    
+    func testExample5() throws {
+        let s = """
+        /// Returns the distance between two indices.
+        ///
+        /// - Parameters:
+        ///   - start: A valid index of the collection.
+        ///   - end: Another valid index of the collection. If `end` is equal to
+        ///     `start`, the result is zero.
+        /// - Returns: The distance between `start` and `end`.
+        """
+        
+        // ☑️ Space remains, but compromise.
+        XCTAssertEqual(
+            s.extractEnglishText(),
+            "Returns the distance between two indices." +
+            "\n\n" +
+            """
+            - Parameters:
+              - start: A valid index of the collection.
+              - end: Another valid index of the collection. If `end` is equal to     `start`, the result is zero.
+            - Returns: The distance between `start` and `end`.
+            """
+        )
+    }
 }
