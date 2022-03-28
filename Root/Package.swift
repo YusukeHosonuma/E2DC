@@ -13,9 +13,12 @@ let package = Package(
         .library(name: "Root", targets: ["Root"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/YusukeHosonuma/SFReadableSymbols.git", from: "1.0.0"),
     ],
     targets: [
-        .target(name: "Root", dependencies: []),
+        .target(name: "Root", dependencies: [
+            "SFReadableSymbols"
+        ]),
         .testTarget(name: "RootTests", dependencies: ["Root"]),
     ]
 )
