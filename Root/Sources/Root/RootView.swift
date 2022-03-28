@@ -66,8 +66,11 @@ public struct RootView: View {
             TextEdit(text: .constant(convertedText), font: editorFont)
                 .foregroundColor(editorFontColor)
 
+            //
+            // ☑️ Option
+            //
             #if os(macOS)
-            Toggle("Automatically launch DeepL when pasted.", isOn: $isAutomaticallyLaunchDeepL)
+            Toggle("Automatically launch DeepL at pasted.", isOn: $isAutomaticallyLaunchDeepL)
                 .toggleStyle(.checkbox)
             #endif
         }
