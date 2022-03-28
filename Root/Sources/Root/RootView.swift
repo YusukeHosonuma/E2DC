@@ -10,16 +10,19 @@ import SFReadableSymbols
 import SwiftUI
 
 public struct RootView: View {
-    @State var sourceText: String = ""
-    @State var destinationText: String = ""
-    @AppStorage("isAutomaticallyLaunchDeepL") var isAutomaticallyLaunchDeepL = false
+    #if os(macOS)
+    @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
+    #endif
+
+    @State private var sourceText: String = ""
+    @State private var isPresentActivitySheet = false
 
     public init() {}
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
 
-    // ☑️ Note: pure `.white` is too bright.
-    private let editorFontColor: Color = .white.opacity(0.7)
+    // ☑️ Note: pure `.primary` is too bright.
+    private let editorFontColor: Color = .primary.opacity(0.7)
 
     private var convertedText: String {
         sourceText.extractEnglishText()
@@ -33,11 +36,9 @@ public struct RootView: View {
             HStack {
                 Text("Source:")
                 Spacer()
-                Button(action: onTapClear) {
-                    Label("Clear", symbol: "􀆄")
-                }
+                Button("Clear", action: onTapClear)
             }
-            TextEdit("Please paste source code.", text: $sourceText, font: editorFont)
+            TextEdit("Please paste documentation comment.", text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
 
@@ -47,26 +48,42 @@ public struct RootView: View {
             HStack {
                 Text("Destination:")
                 Spacer()
+                #if os(macOS)
                 Button(action: onTapCopyToClipboard) {
                     Label("Copy to Clipboard", symbol: "􀉄")
                 }
                 Button(action: onTapCopyToDeepL) {
                     Label("Copy to DeepL", symbol: "􀈼")
                 }
+                #else
+                Button {
+                    isPresentActivitySheet = true
+                } label: {
+                    Image(symbol: "􀈂")
+                }
+                #endif
             }
             TextEdit(text: .constant(convertedText), font: editorFont)
                 .foregroundColor(editorFontColor)
 
+            #if os(macOS)
             Toggle("Automatically launch DeepL when pasted.", isOn: $isAutomaticallyLaunchDeepL)
                 .toggleStyle(.checkbox)
+            #endif
         }
         .padding()
-        // ⚠️ It works. (in currently implementation)
-        .onReceive(Just(sourceText)) { text in
-            if text.isEmpty == false, isAutomaticallyLaunchDeepL {
-                connectToDeelP(convertedText)
+        #if os(macOS)
+            // ⚠️ It works. (in currently implementation)
+            .onReceive(Just(sourceText)) { text in
+                if text.isEmpty == false, isAutomaticallyLaunchDeepL {
+                    connectToDeelP(convertedText)
+                }
             }
-        }
+        #else
+            .sheet(isPresented: $isPresentActivitySheet) {
+                ActivityView(activityItems: [convertedText])
+            }
+        #endif
     }
 
     // MARK: Action
@@ -75,6 +92,7 @@ public struct RootView: View {
         sourceText = ""
     }
 
+    #if os(macOS)
     private func onTapCopyToClipboard() {
         copyToPasteBoard(convertedText)
     }
@@ -82,13 +100,16 @@ public struct RootView: View {
     private func onTapCopyToDeepL() {
         connectToDeelP(convertedText)
     }
+    #endif
 
     // MARK: Private
 
+    #if os(macOS)
     private func connectToDeelP(_ text: String) {
         Task {
+            // 💡 Deceive DeepL.
             copyToPasteBoard(text)
-            try! await Task.sleep(milliseconds: 100) // 💡 Deceive DeepL.
+            try! await Task.sleep(milliseconds: 100)
             copyToPasteBoard(text)
         }
     }
@@ -97,4 +118,5 @@ public struct RootView: View {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(text, forType: .string)
     }
+    #endif
 }
