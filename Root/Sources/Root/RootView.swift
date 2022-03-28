@@ -35,7 +35,7 @@ public struct RootView: View {
                 Spacer()
                 Button("Clear", action: onTapClear)
             }
-            TextEdit("Please paste source code.", text: $sourceText, font: editorFont)
+            TextEdit("Please paste documentation comment.", text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
 
