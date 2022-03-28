@@ -5,12 +5,14 @@
 //  Created by Yusuke Hosonuma on 2022/03/28.
 //
 
+import Combine
 import SFReadableSymbols
 import SwiftUI
 
 public struct RootView: View {
     @State var sourceText: String = ""
     @State var destinationText: String = ""
+    @AppStorage("isAutomaticallyLaunchDeepL") var isAutomaticallyLaunchDeepL = false
 
     public init() {}
 
@@ -54,8 +56,17 @@ public struct RootView: View {
             }
             TextEdit(text: .constant(convertedText), font: editorFont)
                 .foregroundColor(editorFontColor)
+
+            Toggle("Automatically launch DeepL when pasted.", isOn: $isAutomaticallyLaunchDeepL)
+                .toggleStyle(.checkbox)
         }
         .padding()
+        // ⚠️ It works. (in currently implementation)
+        .onReceive(Just(sourceText)) { text in
+            if text.isEmpty == false, isAutomaticallyLaunchDeepL {
+                connectToDeelP(convertedText)
+            }
+        }
     }
 
     // MARK: Action
@@ -65,20 +76,22 @@ public struct RootView: View {
     }
 
     private func onTapCopyToClipboard() {
-        let text = convertedText
-        copyToPasteBoard(text)
+        copyToPasteBoard(convertedText)
     }
 
     private func onTapCopyToDeepL() {
-        let text = convertedText
+        connectToDeelP(convertedText)
+    }
+
+    // MARK: Private
+
+    private func connectToDeelP(_ text: String) {
         Task {
             copyToPasteBoard(text)
             try! await Task.sleep(milliseconds: 100) // 💡 Deceive DeepL.
             copyToPasteBoard(text)
         }
     }
-
-    // MARK: Private
 
     private func copyToPasteBoard(_ text: String) {
         NSPasteboard.general.clearContents()
