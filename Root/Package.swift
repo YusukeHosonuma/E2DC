@@ -17,7 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "Root", dependencies: [
-            "SFReadableSymbols"
+            "SFReadableSymbols",
         ]),
         .testTarget(name: "RootTests", dependencies: ["Root"]),
     ]
