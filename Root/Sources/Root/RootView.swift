@@ -5,17 +5,19 @@
 //  Created by Yusuke Hosonuma on 2022/03/28.
 //
 
+import Combine
 import SFReadableSymbols
 import SwiftUI
 
 public struct RootView: View {
     @State var sourceText: String = ""
     @State var destinationText: String = ""
+    @AppStorage("isAutomaticallyLaunchDeepL") var isAutomaticallyLaunchDeepL = false
 
     public init() {}
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
-    
+
     // ☑️ Note: pure `.white` is too bright.
     private let editorFontColor: Color = .white.opacity(0.7)
 
@@ -28,7 +30,13 @@ public struct RootView: View {
             //
             // Source
             //
-            Text("Source:")
+            HStack {
+                Text("Source:")
+                Spacer()
+                Button(action: onTapClear) {
+                    Label("Clear", symbol: "􀆄")
+                }
+            }
             TextEdit("Please paste source code.", text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
@@ -48,19 +56,36 @@ public struct RootView: View {
             }
             TextEdit(text: .constant(convertedText), font: editorFont)
                 .foregroundColor(editorFontColor)
+
+            Toggle("Automatically launch DeepL when pasted.", isOn: $isAutomaticallyLaunchDeepL)
+                .toggleStyle(.checkbox)
         }
         .padding()
+        // ⚠️ It works. (in currently implementation)
+        .onReceive(Just(sourceText)) { text in
+            if text.isEmpty == false, isAutomaticallyLaunchDeepL {
+                connectToDeelP(convertedText)
+            }
+        }
+    }
+
+    // MARK: Action
+
+    private func onTapClear() {
+        sourceText = ""
+    }
+
+    private func onTapCopyToClipboard() {
+        copyToPasteBoard(convertedText)
+    }
+
+    private func onTapCopyToDeepL() {
+        connectToDeelP(convertedText)
     }
 
     // MARK: Private
 
-    private func onTapCopyToClipboard() {
-        let text = convertedText
-        copyToPasteBoard(text)
-    }
-
-    private func onTapCopyToDeepL() {
-        let text = convertedText
+    private func connectToDeelP(_ text: String) {
         Task {
             copyToPasteBoard(text)
             try! await Task.sleep(milliseconds: 100) // 💡 Deceive DeepL.
