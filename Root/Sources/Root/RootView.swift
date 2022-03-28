@@ -10,7 +10,10 @@ import SFReadableSymbols
 import SwiftUI
 
 public struct RootView: View {
+    #if os(macOS)
     @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
+    #endif
+
     @State private var sourceText: String = ""
     @State private var isPresentActivitySheet = false
 
