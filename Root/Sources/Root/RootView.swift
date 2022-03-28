@@ -15,7 +15,7 @@ public struct RootView: View {
     public init() {}
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
-    
+
     // ☑️ Note: pure `.white` is too bright.
     private let editorFontColor: Color = .white.opacity(0.7)
 
@@ -28,7 +28,13 @@ public struct RootView: View {
             //
             // Source
             //
-            Text("Source:")
+            HStack {
+                Text("Source:")
+                Spacer()
+                Button(action: onTapClear) {
+                    Label("Clear", symbol: "􀆄")
+                }
+            }
             TextEdit("Please paste source code.", text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
@@ -52,7 +58,11 @@ public struct RootView: View {
         .padding()
     }
 
-    // MARK: Private
+    // MARK: Action
+
+    private func onTapClear() {
+        sourceText = ""
+    }
 
     private func onTapCopyToClipboard() {
         let text = convertedText
@@ -67,6 +77,8 @@ public struct RootView: View {
             copyToPasteBoard(text)
         }
     }
+
+    // MARK: Private
 
     private func copyToPasteBoard(_ text: String) {
         NSPasteboard.general.clearContents()
