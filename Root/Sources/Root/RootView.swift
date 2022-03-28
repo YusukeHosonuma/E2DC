@@ -10,16 +10,16 @@ import SFReadableSymbols
 import SwiftUI
 
 public struct RootView: View {
-    @State var sourceText: String = ""
-    @State var destinationText: String = ""
-    @AppStorage("isAutomaticallyLaunchDeepL") var isAutomaticallyLaunchDeepL = false
+    @State private var sourceText: String = ""
+    @State private var destinationText: String = ""
+    @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
 
     public init() {}
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
 
-    // ☑️ Note: pure `.white` is too bright.
-    private let editorFontColor: Color = .white.opacity(0.7)
+    // ☑️ Note: pure `.primary` is too bright.
+    private let editorFontColor: Color = .primary.opacity(0.7)
 
     private var convertedText: String {
         sourceText.extractEnglishText()
