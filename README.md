@@ -12,6 +12,13 @@ https://user-images.githubusercontent.com/2990285/160504047-f336470b-011c-489b-b
 - macOS 12+
 - iOS 15+
 
+## Development
+
+```bash
+brew install mint
+mint bootstrap
+```
+
 ## FAQ
 
 Q. AppStore で配布して欲しい。<br>
