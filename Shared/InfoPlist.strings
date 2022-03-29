@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  E2DCApp
+
+  Created by Yusuke Hosonuma on 2022/03/29.
+  
+*/
+"CFBundleName" = "E2DC";
+"CFBundleDisplayName" = "E2DC";
