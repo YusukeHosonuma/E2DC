@@ -160,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70CDC65E27F1689400CD3782 /* Build configuration list for PBXNativeTarget "E2DC (iOS)" */;
 			buildPhases = (
+				707A681927F45CFA0098E64A /* SwiftGen */,
 				708F5E0F27F1A77E0089D8F7 /* Format Sources */,
 				70CDC63127F1689400CD3782 /* Sources */,
 				70CDC63227F1689400CD3782 /* Frameworks */,
@@ -181,6 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70CDC66127F1689400CD3782 /* Build configuration list for PBXNativeTarget "E2DC (macOS)" */;
 			buildPhases = (
+				707A681827F45CDA0098E64A /* SwiftGen */,
 				708F5E1027F1A79F0089D8F7 /* Format Sources */,
 				70CDC63727F1689400CD3782 /* Sources */,
 				70CDC63827F1689400CD3782 /* Frameworks */,
@@ -318,6 +320,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		707A681827F45CDA0098E64A /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nmint run swiftgen\n";
+		};
+		707A681927F45CFA0098E64A /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nmint run swiftgen\n";
+		};
 		708F5E0F27F1A77E0089D8F7 /* Format Sources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
