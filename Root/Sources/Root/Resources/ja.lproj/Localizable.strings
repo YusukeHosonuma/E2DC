@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  E2DCApp
+
+  Created by Yusuke Hosonuma on 2022/03/29.
+  
+*/
+"Source" = "変換元";
+"Destination" = "変換先";
+"Clear" = "クリア";
+"Copy to Clipboard" = "クリップボードにコピー";
+"Copy to DeepL" = "DeepLにコピー";
+"Automatically launch DeepL at pasted" = "貼付け時にDeepLにコピーする";
+"Please paste documentation comment." = "ドキュメンテーションコメントを貼り付けてください。";
