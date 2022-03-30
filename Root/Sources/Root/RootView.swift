@@ -34,11 +34,11 @@ public struct RootView: View {
             // Source
             //
             HStack {
-                Text("Source:")
+                Text(NSLocalizedString("Source", bundle: .module, comment: ""))
                 Spacer()
-                Button("Clear", action: onTapClear)
+                Button(NSLocalizedString("Clear", bundle: .module, comment: ""), action: onTapClear)
             }
-            TextEdit("Please paste documentation comment.", text: $sourceText, font: editorFont)
+            TextEdit(NSLocalizedString("Please paste documentation comment.", bundle: .module, comment: ""), text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
 
@@ -46,14 +46,14 @@ public struct RootView: View {
             // Destination
             //
             HStack {
-                Text("Destination:")
+                Text(NSLocalizedString("Destination", bundle: .module, comment: ""))
                 Spacer()
                 #if os(macOS)
                 Button(action: onTapCopyToClipboard) {
-                    Label("Copy to Clipboard", symbol: "􀉄")
+                    Label(NSLocalizedString("Copy to Clipboard", bundle: .module, comment: ""), symbol: "􀉄")
                 }
                 Button(action: onTapCopyToDeepL) {
-                    Label("Copy to DeepL", symbol: "􀈼")
+                    Label(NSLocalizedString("Copy to DeepL", bundle: .module, comment: ""), symbol: "􀈼")
                 }
                 #else
                 Button {
@@ -70,7 +70,7 @@ public struct RootView: View {
             // ☑️ Option
             //
             #if os(macOS)
-            Toggle("Automatically launch DeepL at pasted.", isOn: $isAutomaticallyLaunchDeepL)
+            Toggle(NSLocalizedString("Automatically launch DeepL at pasted", bundle: .module, comment: ""), isOn: $isAutomaticallyLaunchDeepL)
                 .toggleStyle(.checkbox)
             #endif
         }

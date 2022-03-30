@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Root",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v15),
         .macOS(.v12),
@@ -16,9 +17,13 @@ let package = Package(
         .package(url: "https://github.com/YusukeHosonuma/SFReadableSymbols.git", from: "1.0.0"),
     ],
     targets: [
-        .target(name: "Root", dependencies: [
-            "SFReadableSymbols",
-        ]),
+        .target(
+            name: "Root",
+            dependencies: [
+                "SFReadableSymbols",
+            ],
+            resources: [.process("Resources")]
+        ),
         .testTarget(name: "RootTests", dependencies: ["Root"]),
     ]
 )
