@@ -8,7 +8,9 @@
 import SwiftUI
 
 public struct RootScene: Scene {
+    #if os(macOS)
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    #endif
 
     public init() {}
 
@@ -16,6 +18,7 @@ public struct RootScene: Scene {
         WindowGroup {
             RootView()
         }
+        #if os(macOS)
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.appInfo) {
                 Button(L10n.about) {
@@ -23,11 +26,12 @@ public struct RootScene: Scene {
                 }
             }
         }
+        #endif
     }
 }
 
 // ref: https://stackoverflow.com/questions/64624261/swiftui-change-about-view-in-macos-app
-
+#if os(macOS)
 private class AppDelegate: NSObject, NSApplicationDelegate {
     private var aboutBoxWindowController: NSWindowController?
 
@@ -45,3 +49,4 @@ private class AppDelegate: NSObject, NSApplicationDelegate {
         aboutBoxWindowController?.showWindow(aboutBoxWindowController?.window)
     }
 }
+#endif

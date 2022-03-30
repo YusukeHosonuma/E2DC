@@ -5,6 +5,8 @@
 //  Created by Yusuke Hosonuma on 2022/03/30.
 //
 
+#if os(macOS)
+
 import SwiftUI
 
 private let repositoryURL = URL(string: "https://github.com/YusukeHosonuma/E2DC")!
@@ -35,3 +37,5 @@ struct AboutView: View {
         .frame(minWidth: 280, minHeight: 190)
     }
 }
+
+#endif
