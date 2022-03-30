@@ -5,6 +5,8 @@
   Created by Yusuke Hosonuma on 2022/03/29.
   
 */
+"about" = "E2DC について";
+"version" = "バージョン";
 "source" = "変換元";
 "destination" = "変換先";
 "clear" = "クリア";

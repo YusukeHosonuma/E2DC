@@ -5,6 +5,8 @@
   Created by Yusuke Hosonuma on 2022/03/29.
   
 */
+"about" = "About E2DC";
+"version" = "Version";
 "source" = "Source";
 "destination" = "Destination";
 "clear" = "Clear";
