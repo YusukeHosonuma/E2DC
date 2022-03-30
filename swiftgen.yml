@@ -1,0 +1,6 @@
+strings:
+  inputs:
+    - Root/Sources/Root/Resources/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Root/Sources/Root/Generated/Strings.swift
