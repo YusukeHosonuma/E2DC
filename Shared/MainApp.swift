@@ -11,8 +11,6 @@ import Root
 @main
 struct MainApp: App {
     var body: some Scene {
-        WindowGroup {
-            RootView()
-        }
+        RootScene()
     }
 }
