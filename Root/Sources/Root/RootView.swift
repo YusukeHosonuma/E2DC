@@ -31,11 +31,20 @@ public struct RootView: View {
     public var body: some View {
         #if os(macOS)
         content()
+            // ⚠️ It works. (in currently implementation)
+            .onReceive(Just(sourceText)) { text in
+                if text.isEmpty == false, isAutomaticallyLaunchDeepL {
+                    connectToDeelP(convertedText)
+                }
+            }
         #else
         NavigationView {
             content()
                 .navigationTitle("E2DC")
                 .navigationBarTitleDisplayMode(.inline)
+                .sheet(isPresented: $isPresentActivitySheet) {
+                    ActivityView(activityItems: [convertedText])
+                }
         }
         #endif
     }
@@ -87,18 +96,6 @@ public struct RootView: View {
             #endif
         }
         .padding()
-        #if os(macOS)
-            // ⚠️ It works. (in currently implementation)
-            .onReceive(Just(sourceText)) { text in
-                if text.isEmpty == false, isAutomaticallyLaunchDeepL {
-                    connectToDeelP(convertedText)
-                }
-            }
-        #else
-            .sheet(isPresented: $isPresentActivitySheet) {
-                ActivityView(activityItems: [convertedText])
-            }
-        #endif
     }
 
     // MARK: Action
