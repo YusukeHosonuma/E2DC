@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// About E2DC
+  internal static let about = L10n.tr("Localizable", "about")
   /// Automatically launch DeepL at pasted
   internal static let automaticallyLaunchDeeplAtPasted = L10n.tr("Localizable", "automatically_launch_deepl_at_pasted")
   /// Clear
@@ -24,6 +26,8 @@ internal enum L10n {
   internal static let pleasePasteDocumentationComment = L10n.tr("Localizable", "please_paste_documentation_comment")
   /// Source
   internal static let source = L10n.tr("Localizable", "source")
+  /// Version
+  internal static let version = L10n.tr("Localizable", "version")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
