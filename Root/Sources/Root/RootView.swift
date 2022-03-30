@@ -34,11 +34,11 @@ public struct RootView: View {
             // Source
             //
             HStack {
-                Text(NSLocalizedString("Source", bundle: .module, comment: ""))
+                Text(L10n.source)
                 Spacer()
-                Button(NSLocalizedString("Clear", bundle: .module, comment: ""), action: onTapClear)
+                Button(L10n.clear, action: onTapClear)
             }
-            TextEdit(NSLocalizedString("Please paste documentation comment.", bundle: .module, comment: ""), text: $sourceText, font: editorFont)
+            TextEdit(L10n.pleasePasteDocumentationComment, text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
                 .padding(.bottom)
 
@@ -46,14 +46,14 @@ public struct RootView: View {
             // Destination
             //
             HStack {
-                Text(NSLocalizedString("Destination", bundle: .module, comment: ""))
+                Text(L10n.destination)
                 Spacer()
                 #if os(macOS)
                 Button(action: onTapCopyToClipboard) {
-                    Label(NSLocalizedString("Copy to Clipboard", bundle: .module, comment: ""), symbol: "􀉄")
+                    Label(L10n.copyToClipboard, symbol: "􀉄")
                 }
                 Button(action: onTapCopyToDeepL) {
-                    Label(NSLocalizedString("Copy to DeepL", bundle: .module, comment: ""), symbol: "􀈼")
+                    Label(L10n.copyToDeepl, symbol: "􀈼")
                 }
                 #else
                 Button {
@@ -70,7 +70,7 @@ public struct RootView: View {
             // ☑️ Option
             //
             #if os(macOS)
-            Toggle(NSLocalizedString("Automatically launch DeepL at pasted", bundle: .module, comment: ""), isOn: $isAutomaticallyLaunchDeepL)
+            Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
                 .toggleStyle(.checkbox)
             #endif
         }

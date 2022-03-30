@@ -5,10 +5,10 @@
   Created by Yusuke Hosonuma on 2022/03/29.
   
 */
-"Source" = "Source";
-"Destination" = "Destination";
-"Clear" = "Clear";
-"Copy to Clipboard" = "Copy to Clipboard";
-"Copy to DeepL" = "Copy to DeepL";
-"Automatically launch DeepL at pasted" = "Automatically launch DeepL at pasted";
-"Please paste documentation comment." = "Please paste documentation comment.";
+"source" = "Source";
+"destination" = "Destination";
+"clear" = "Clear";
+"copy_to_clipboard" = "Copy to Clipboard";
+"copy_to_deepl" = "Copy to DeepL";
+"automatically_launch_deepl_at_pasted" = "Automatically launch DeepL at pasted";
+"please_paste_documentation_comment" = "Please paste documentation comment.";
