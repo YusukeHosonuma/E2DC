@@ -29,6 +29,18 @@ public struct RootView: View {
     }
 
     public var body: some View {
+        #if os(macOS)
+        content()
+        #else
+        NavigationView {
+            content()
+                .navigationTitle("E2DC")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+        #endif
+    }
+
+    private func content() -> some View {
         VStack(alignment: .leading) {
             //
             // Source
