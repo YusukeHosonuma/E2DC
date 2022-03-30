@@ -46,6 +46,7 @@ public struct RootView: View {
                     ActivityView(activityItems: [convertedText])
                 }
         }
+        .navigationViewStyle(.stack)
         #endif
     }
 
