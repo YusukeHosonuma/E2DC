@@ -97,4 +97,45 @@ final class StringExtensionTests: XCTestCase {
             """
         )
     }
+    
+    func testExample6() throws {
+        let s = """
+        /// The array's "past the end" position---that is, the position one greater
+        /// than the last valid subscript argument.
+        ///
+        /// When you need a range that includes the last element of an array, use the
+        /// half-open range operator (`..<`) with `endIndex`. The `..<` operator
+        /// creates a range that doesn't include the upper bound, so it's always
+        /// safe to use with `endIndex`. For example:
+        ///
+        ///     let numbers = [10, 20, 30, 40, 50]
+        ///     if let i = numbers.firstIndex(of: 30) {
+        ///         print(numbers[i ..< numbers.endIndex])
+        ///     }
+        ///     // Prints "[30, 40, 50]"
+        ///
+        /// If the array is empty, `endIndex` is equal to `startIndex`.
+        """
+        
+        XCTAssertEqual(
+            s.extractEnglishText(),
+            "The array's \"past the end\" position---that is, the position one greater " +
+            "than the last valid subscript argument." +
+            "\n\n" +
+            "When you need a range that includes the last element of an array, use the " +
+            "half-open range operator (`..<`) with `endIndex`. The `..<` operator " +
+            "creates a range that doesn't include the upper bound, so it's always " +
+            "safe to use with `endIndex`. For example:" +
+            "\n\n" +
+            """
+                let numbers = [10, 20, 30, 40, 50]
+                if let i = numbers.firstIndex(of: 30) {
+                    print(numbers[i ..< numbers.endIndex])
+                }
+                // Prints "[30, 40, 50]"
+            
+            If the array is empty, `endIndex` is equal to `startIndex`.
+            """
+        )
+    }
 }
