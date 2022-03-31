@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     func extractEnglishText() -> String {
-        components(separatedBy: "\n")
+        lines
             .map(\.pureText)
             .reduce(into: []) { lines, newLine in
                 func isCodeLine() -> Bool {
@@ -43,6 +43,10 @@ extension String {
         drop { $0 == " " }
             .replacingOccurrences(of: "/// ", with: "")
             .replacingOccurrences(of: "///", with: "")
+    }
+    
+    private var lines: [String] {
+        split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
     }
 
     private func trimed() -> String {
