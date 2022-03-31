@@ -9,15 +9,19 @@ import Foundation
 
 extension String {
     func extractEnglishText() -> String {
-        return components(separatedBy: "\n")
+        components(separatedBy: "\n")
             .map(\.pureText)
-            .reduce(into: []) {
-                if $1.isEmpty {
-                    $0.append("\n")
-                } else if $0.last == "\n" || $1.isListLine {
-                    $0.append("\n" + $1) // Join with new-line
+            .reduce(into: []) { lines, newLine in
+                func isCodeLine() -> Bool {
+                    lines.last?.isListLine == false && newLine.starts(with: "    ")
+                }
+
+                if newLine.isEmpty {
+                    lines.append("\n")
+                } else if lines.last == "\n" || newLine.isListLine || isCodeLine() {
+                    lines.append(contentsOf: ["\n", newLine]) // Join with new-line
                 } else {
-                    $0.append(" " + $1.trimed()) // Join to one-line
+                    lines.append(" " + newLine.trimed()) // Join to one-line
                 }
             }
             .joined()
@@ -33,14 +37,14 @@ extension String {
     private var isListLine: Bool {
         drop { $0 == " " }.first == "-"
     }
-    
+
     private var pureText: String {
         // Trimming space and documentation comment token.
         drop { $0 == " " }
             .replacingOccurrences(of: "/// ", with: "")
             .replacingOccurrences(of: "///", with: "")
     }
-    
+
     private func trimed() -> String {
         trimmingCharacters(in: .whitespaces)
     }
