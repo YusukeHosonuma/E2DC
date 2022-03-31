@@ -25,10 +25,15 @@ Q. AppStore で配布して欲しい。<br>
 A. 近いうちにリリースしたいと考えています。
 
 Q. うまく変換できないときがある。<br>
-A. 現時点では**大雑把に動けばいい**というスタンスのため[実装は雑](https://github.com/YusukeHosonuma/E2DC/blob/1.0.0/Root/Sources/Root/Extension/String%2B.swift)です。改善PRについてはいつでも歓迎です 🙏
+A. 現時点では**大雑把に動けばいい**というスタンスのため[実装は雑](https://github.com/YusukeHosonuma/E2DC/blob/main/Root/Sources/Root/Extension/String%2B.swift)です。改善PRについてはいつでも歓迎です 🙏
 
 Q. もっと実践的な SwiftUI アプリを作って。どうぞ。<br>
 A. [Swift-Evolution-Browser](https://github.com/YusukeHosonuma/Swift-Evolution-Browser/)
+
+## Links
+
+- [Effective SwiftUI 候補（仮説）](https://zenn.dev/tobi462/scraps/905f2e6ac9b895)
+- [SFReadableSymbols](https://github.com/YusukeHosonuma/SFReadableSymbols)
 
 ## Author
 
