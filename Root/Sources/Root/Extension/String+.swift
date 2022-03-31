@@ -49,6 +49,10 @@ extension String {
         split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
     }
 
+    private var lines: [String] {
+        split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
+    }
+
     private func trimed() -> String {
         trimmingCharacters(in: .whitespaces)
     }
