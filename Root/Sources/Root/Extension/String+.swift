@@ -9,22 +9,39 @@ import Foundation
 
 extension String {
     func extractEnglishText() -> String {
-        //
-        // 😇 TODO: I would like someone to introduce a parser.
-        //
-        split(separator: "\n")
-            .map { $0.drop { $0 == " " } }
-            .joined(separator: "\n")
-            .components(separatedBy: "///\n")
-            .map {
-                $0.split(separator: "\n").map {
-                    $0.replacingOccurrences(of: "/// ", with: "")
+        return components(separatedBy: "\n")
+            .map(\.pureText)
+            .reduce(into: []) {
+                if $1.isEmpty {
+                    $0.append("\n")
+                } else if $0.last == "\n" || $1.isListLine {
+                    $0.append("\n" + $1) // Join with new-line
+                } else {
+                    $0.append(" " + $1.trimed()) // Join to one-line
                 }
-                .joined(separator: " ")
             }
-            .joined(separator: "\n\n")
+            .joined()
             .replacingOccurrences(of: "``", with: "`")
-            .replacingOccurrences(of: " -", with: "\n-")
-            .replacingOccurrences(of: "  \n-", with: "\n  -")
+            .trimed()
+    }
+
+    // e.g.
+    // ```
+    // - Parameters:
+    //   - start: A valid index of the collection.
+    // ```
+    private var isListLine: Bool {
+        drop { $0 == " " }.first == "-"
+    }
+    
+    private var pureText: String {
+        // Trimming space and documentation comment token.
+        drop { $0 == " " }
+            .replacingOccurrences(of: "/// ", with: "")
+            .replacingOccurrences(of: "///", with: "")
+    }
+    
+    private func trimed() -> String {
+        trimmingCharacters(in: .whitespaces)
     }
 }

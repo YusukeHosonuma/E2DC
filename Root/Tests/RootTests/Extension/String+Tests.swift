@@ -85,7 +85,6 @@ final class StringExtensionTests: XCTestCase {
         /// - Returns: The distance between `start` and `end`.
         """
         
-        // ☑️ Space remains, but compromise.
         XCTAssertEqual(
             s.extractEnglishText(),
             "Returns the distance between two indices." +
@@ -93,7 +92,7 @@ final class StringExtensionTests: XCTestCase {
             """
             - Parameters:
               - start: A valid index of the collection.
-              - end: Another valid index of the collection. If `end` is equal to     `start`, the result is zero.
+              - end: Another valid index of the collection. If `end` is equal to `start`, the result is zero.
             - Returns: The distance between `start` and `end`.
             """
         )
