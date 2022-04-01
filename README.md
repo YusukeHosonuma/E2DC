@@ -22,10 +22,13 @@ mint bootstrap
 ## FAQ
 
 Q. AppStore で配布して欲しい。<br>
-A. 近いうちにリリースしたいと考えています。
+A. [macOS版については AppStore で公開済み](https://apps.apple.com/app/id1616576556)です。iOS版も近日中にリリースを予定しています。
 
 Q. うまく変換できないときがある。<br>
 A. 現時点では**大雑把に動けばいい**というスタンスのため[実装は雑](https://github.com/YusukeHosonuma/E2DC/blob/main/Root/Sources/Root/Extension/String%2B.swift)です。改善PRについてはいつでも歓迎です 🙏
+
+Q. Swift以外の言語は対応しないの？
+A. 需要がありそうなら対応したいと考えています。（自分が欲しい物を優先した結果、Swiftのみ最初に対応しました）
 
 Q. もっと実践的な SwiftUI アプリを作って。どうぞ。<br>
 A. [Swift-Evolution-Browser](https://github.com/YusukeHosonuma/Swift-Evolution-Browser/)
