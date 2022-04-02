@@ -40,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		700873F327F282FE00185FB2 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		7071A17827F847A90028C329 /* E2DC--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "E2DC--macOS--Info.plist"; sourceTree = "<group>"; };
 		70CDC62E27F1689300CD3782 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		70CDC63027F1689400CD3782 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70CDC63527F1689400CD3782 /* E2DC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = E2DC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +91,7 @@
 		70CDC62827F1689300CD3782 = {
 			isa = PBXGroup;
 			children = (
+				7071A17827F847A90028C329 /* E2DC--macOS--Info.plist */,
 				70CDC62D27F1689300CD3782 /* Shared */,
 				70CDC63C27F1689400CD3782 /* macOS */,
 				70CDC64527F1689400CD3782 /* Tests iOS */,
@@ -628,6 +630,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "E2DC--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "@2022 Yusuke Hosonuma.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,6 +660,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "E2DC--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "@2022 Yusuke Hosonuma.";
 				LD_RUNPATH_SEARCH_PATHS = (
