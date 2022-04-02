@@ -9,15 +9,22 @@ import Combine
 import SFReadableSymbols
 import SwiftUI
 
-public struct RootView: View {
+struct RootView: View {
     #if os(macOS)
     @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
+    private let showAboutPanelHandler: () -> Void
     #endif
 
     @State private var sourceText: String = ""
     @State private var isPresentActivitySheet = false
 
-    public init() {}
+    #if os(macOS)
+    init(showAboutPanelHandler: @escaping () -> Void) {
+        self.showAboutPanelHandler = showAboutPanelHandler
+    }
+    #else
+    init() {}
+    #endif
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
 
@@ -28,7 +35,7 @@ public struct RootView: View {
         sourceText.extractEnglishText()
     }
 
-    public var body: some View {
+    var body: some View {
         #if os(macOS)
         content()
             // ⚠️ It works. (in currently implementation)
@@ -92,8 +99,16 @@ public struct RootView: View {
             // ☑️ Option
             //
             #if os(macOS)
-            Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
-                .toggleStyle(.checkbox)
+            HStack {
+                Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
+                    .toggleStyle(.checkbox)
+                Spacer()
+                Button(action: onTapInfo) {
+                    Image(symbol: "􀅴")
+                }
+                .font(.title2)
+                .buttonStyle(.link)
+            }
             #endif
         }
         .padding()
@@ -112,6 +127,10 @@ public struct RootView: View {
 
     private func onTapCopyToDeepL() {
         connectToDeelP(convertedText)
+    }
+
+    private func onTapInfo() {
+        showAboutPanelHandler()
     }
     #endif
 
