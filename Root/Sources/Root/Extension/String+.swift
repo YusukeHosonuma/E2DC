@@ -10,7 +10,7 @@ import Foundation
 extension String {
     func extractEnglishText() -> String {
         lines
-            .map(\.pureText)
+            .compactMap(\.removeCommentToken)
             .reduce(into: []) { lines, newLine in
                 func isCodeLine() -> Bool {
                     lines.last?.isListLine == false && newLine.starts(with: "    ")
@@ -35,14 +35,24 @@ extension String {
     //   - start: A valid index of the collection.
     // ```
     private var isListLine: Bool {
-        drop { $0 == " " }.first == "-"
+        if let firstToken = removeIndent().first {
+            return ["-", "@"].contains(firstToken)
+        } else {
+            return false
+        }
     }
 
-    private var pureText: String {
-        // Trimming space and documentation comment token.
-        drop { $0 == " " }
-            .replacingOccurrences(of: "/// ", with: "")
-            .replacingOccurrences(of: "///", with: "")
+    // Trimming space and documentation comment token.
+    private var removeCommentToken: String? {
+        let line = removeIndent()
+
+        if line.hasPrefix("/**") || line.hasPrefix("*/") {
+            return nil
+        } else {
+            return ["/// ", "///", "* ", "*"].reduce(line) {
+                $0.replacingOccurrences(of: $1, with: "")
+            }
+        }
     }
 
     private var lines: [String] {
@@ -51,5 +61,9 @@ extension String {
 
     private func trimed() -> String {
         trimmingCharacters(in: .whitespaces)
+    }
+
+    private func removeIndent() -> String {
+        String(drop { $0 == " " })
     }
 }
