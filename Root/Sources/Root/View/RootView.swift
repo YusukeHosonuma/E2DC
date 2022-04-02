@@ -9,7 +9,7 @@ import Combine
 import SFReadableSymbols
 import SwiftUI
 
-public struct RootView: View {
+struct RootView: View {
     #if os(macOS)
     @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
     private let showAboutPanelHandler: () -> Void
@@ -19,11 +19,11 @@ public struct RootView: View {
     @State private var isPresentActivitySheet = false
 
     #if os(macOS)
-    public init(showAboutPanelHandler: @escaping () -> Void) {
+    init(showAboutPanelHandler: @escaping () -> Void) {
         self.showAboutPanelHandler = showAboutPanelHandler
     }
     #else
-    public init() {}
+    init() {}
     #endif
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
@@ -35,7 +35,7 @@ public struct RootView: View {
         sourceText.extractEnglishText()
     }
 
-    public var body: some View {
+    var body: some View {
         #if os(macOS)
         content()
             // ⚠️ It works. (in currently implementation)
