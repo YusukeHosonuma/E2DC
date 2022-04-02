@@ -68,7 +68,7 @@ private class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         // Create the SwiftUI view that provides the window contents.
-        let contentView = RootView()
+        let contentView = RootView(showAboutPanelHandler: showAboutPanel)
 
         // Create the popover
         let popover = NSPopover()

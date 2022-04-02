@@ -12,12 +12,19 @@ import SwiftUI
 public struct RootView: View {
     #if os(macOS)
     @AppStorage("isAutomaticallyLaunchDeepL") private var isAutomaticallyLaunchDeepL = false
+    private let showAboutPanelHandler: () -> Void
     #endif
 
     @State private var sourceText: String = ""
     @State private var isPresentActivitySheet = false
 
+    #if os(macOS)
+    public init(showAboutPanelHandler: @escaping () -> Void) {
+        self.showAboutPanelHandler = showAboutPanelHandler
+    }
+    #else
     public init() {}
+    #endif
 
     private let editorFont: Font = .custom("SF Mono", size: 16)
 
@@ -92,8 +99,16 @@ public struct RootView: View {
             // ☑️ Option
             //
             #if os(macOS)
-            Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
-                .toggleStyle(.checkbox)
+            HStack {
+                Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
+                    .toggleStyle(.checkbox)
+                Spacer()
+                Button(action: onTapInfo) {
+                    Image(symbol: "􀅴")
+                }
+                .font(.title2)
+                .buttonStyle(.link)
+            }
             #endif
         }
         .padding()
@@ -112,6 +127,10 @@ public struct RootView: View {
 
     private func onTapCopyToDeepL() {
         connectToDeelP(convertedText)
+    }
+
+    private func onTapInfo() {
+        showAboutPanelHandler()
     }
     #endif
 
