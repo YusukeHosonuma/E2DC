@@ -138,4 +138,32 @@ final class StringExtensionTests: XCTestCase {
             """
         )
     }
+    
+    // MARK: JavaDoc /** */ style documentation comment.
+    
+    func testExample7() throws {
+        // https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/common/src/kotlin/TextH.kt#L19-L27
+        let s = """
+            /**
+             * Attempts to match a regular expression exactly at the specified [index] in the [input] char sequence.
+             *
+             * Unlike [matchEntire] function, it doesn't require the match to span to the end of [input].
+             *
+             * @return An instance of [MatchResult] if the input matches this [Regex] at the specified [index] or `null` otherwise.
+             * @throws IndexOutOfBoundsException if [index] is less than zero or greater than the length of the [input] char sequence.
+             * @sample samples.text.Regexps.matchAt
+             */
+        """
+        
+        XCTAssertEqual(
+            s.extractEnglishText(),
+            "Attempts to match a regular expression exactly at the specified [index] in the [input] char sequence." +
+            "\n\n" +
+            "Unlike [matchEntire] function, it doesn't require the match to span to the end of [input]." +
+            "\n\n" +
+            "@return An instance of [MatchResult] if the input matches this [Regex] at the specified [index] or `null` otherwise.\n" +
+            "@throws IndexOutOfBoundsException if [index] is less than zero or greater than the length of the [input] char sequence.\n" +
+            "@sample samples.text.Regexps.matchAt"
+        )
+    }
 }
