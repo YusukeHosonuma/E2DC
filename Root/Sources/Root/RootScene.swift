@@ -46,9 +46,8 @@ public struct RootScene: Scene {
 //
 #if os(macOS)
 private class AppDelegate: NSObject, NSApplicationDelegate {
-    private var popover: NSPopover!
-    private var statusBarItem: NSStatusItem!
     private var aboutBoxWindowController: NSWindowController?
+    private var statusBar: StatusBarController<RootView>?
 
     func showAboutPanel() {
         if aboutBoxWindowController == nil {
@@ -67,12 +66,23 @@ private class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Status bar app
 
     func applicationDidFinishLaunching(_: Notification) {
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = RootView(showAboutPanelHandler: showAboutPanel)
+        statusBar = .init(
+            RootView(showAboutPanelHandler: showAboutPanel),
+            width: 440,
+            height: 360,
+            image: Bundle.module.image(forResource: "status-bar-icon")!
+        )
+    }
+}
 
+private final class StatusBarController<Content: View> {
+    private var popover: NSPopover!
+    private var statusBarItem: NSStatusItem!
+
+    init(_ contentView: Content, width: Int, height: Int, image: NSImage) {
         // Create the popover
         let popover = NSPopover()
-        popover.contentSize = NSSize(width: 440, height: 360)
+        popover.contentSize = NSSize(width: width, height: height)
         popover.behavior = .transient
         popover.contentViewController = NSHostingController(rootView: contentView)
         self.popover = popover
@@ -81,8 +91,9 @@ private class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 
         if let button = statusBarItem.button {
-            button.image = Bundle.module.image(forResource: "status-bar-icon")
+            button.image = image
             button.action = #selector(togglePopover(_:))
+            button.target = self
         }
     }
 
