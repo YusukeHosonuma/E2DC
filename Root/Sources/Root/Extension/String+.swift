@@ -9,7 +9,11 @@ import Foundation
 
 extension String {
     func extractEnglishText() -> String {
-        lines
+        if isEmpty {
+            return self
+        }
+
+        return lines
             .compactMap(\.removeCommentToken)
             .reduce(into: []) { lines, newLine in
                 func isCodeLine() -> Bool {
