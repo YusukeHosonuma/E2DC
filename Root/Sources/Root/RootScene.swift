@@ -19,14 +19,14 @@ public struct RootScene: Scene {
         Settings {
             EmptyView()
         }
-        // TODO: move to icon on app view.
-        .commands {
-            CommandGroup(replacing: CommandGroupPlacement.appInfo) {
-                Button(L10n.about) {
-                    appDelegate.showAboutPanel()
-                }
-            }
-        }
+        // ☑️ moved to icon on app view.
+        // .commands {
+        //     CommandGroup(replacing: CommandGroupPlacement.appInfo) {
+        //         Button(L10n.about) {
+        //             appDelegate.showAboutPanel()
+        //         }
+        //     }
+        // }
         #else
         WindowGroup {
             RootView()
@@ -89,7 +89,7 @@ private final class StatusBarController<Content: View> {
         // Load nib:
         // http://cocoadays.blogspot.com/2010/11/mac-nib.html
         //
-        let nib = NSNib(nibNamed: "MainMenu", bundle: .module)!
+        let nib = NSNib(nibNamed: "MainMenu", bundle: Bundle.main)!
         var topLevelArray: NSArray?
         nib.instantiate(withOwner: nil, topLevelObjects: &topLevelArray)
         let results = topLevelArray as! [Any]
