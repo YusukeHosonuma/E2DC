@@ -64,11 +64,30 @@ struct RootView: View {
             //
             HStack {
                 Text(L10n.source)
+                    .font(.headline)
                 Spacer()
+                #if os(macOS)
                 Button(L10n.clear, action: onTapClear)
+                #else
+
+                Group {
+                    if sourceText.isEmpty {
+                        Button(action: onTapPasteFromClipboard) {
+                            Label("Paste", symbol: "􀉃")
+                        }
+                    } else {
+                        Button(action: onTapClear) {
+                            Label("Clear", symbol: "􀆄")
+                        }
+                    }
+                }
+                #endif
             }
+
             TextEdit(L10n.pleasePasteDocumentationComment, text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
+
+            Divider()
                 .padding(.bottom)
 
             //
@@ -76,6 +95,7 @@ struct RootView: View {
             //
             HStack {
                 Text(L10n.destination)
+                    .font(.headline)
                 Spacer()
                 #if os(macOS)
                 Button(action: onTapCopyToClipboard) {
@@ -89,6 +109,7 @@ struct RootView: View {
                     isPresentActivitySheet = true
                 } label: {
                     Image(symbol: "􀈂")
+                        .font(.system(size: 20))
                 }
                 #endif
             }
@@ -142,6 +163,11 @@ struct RootView: View {
 
     private func onTapQuit() {
         NSApplication.shared.terminate(nil)
+    }
+    #else
+    private func onTapPasteFromClipboard() {
+        guard let string = UIPasteboard.general.string else { return }
+        sourceText = string
     }
     #endif
 
