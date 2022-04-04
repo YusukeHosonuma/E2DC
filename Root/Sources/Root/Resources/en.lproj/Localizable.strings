@@ -5,11 +5,13 @@
   Created by Yusuke Hosonuma on 2022/03/29.
   
 */
-"about" = "About E2DC";
+"about" = "About";
+"quit" = "Quit";
 "version" = "Version";
 "source" = "Source";
 "destination" = "Destination";
 "clear" = "Clear";
+"paste" = "Paste";
 "copy_to_clipboard" = "Copy to Clipboard";
 "copy_to_deepl" = "Copy to DeepL";
 "automatically_launch_deepl_at_pasted" = "Automatically launch DeepL at pasted";

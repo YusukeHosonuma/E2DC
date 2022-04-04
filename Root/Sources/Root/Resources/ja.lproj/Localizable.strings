@@ -5,11 +5,13 @@
   Created by Yusuke Hosonuma on 2022/03/29.
   
 */
-"about" = "E2DC について";
+"about" = "このアプリについて";
+"quit" = "E2DCを終了";
 "version" = "バージョン";
 "source" = "変換元";
 "destination" = "変換先";
 "clear" = "クリア";
+"paste" = "貼り付け";
 "copy_to_clipboard" = "クリップボードにコピー";
 "copy_to_deepl" = "DeepLにコピー";
 "automatically_launch_deepl_at_pasted" = "貼付け時にDeepLにコピーする";
