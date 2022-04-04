@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7004466B27FABDDE00E62C53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7004466E27FABDDE00E62C53 /* Localizable.strings */; };
+		7004466C27FABDDE00E62C53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7004466E27FABDDE00E62C53 /* Localizable.strings */; };
 		700873F427F282FE00185FB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 700873F327F282FE00185FB2 /* InfoPlist.strings */; };
 		700873F527F282FE00185FB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 700873F327F282FE00185FB2 /* InfoPlist.strings */; };
 		70CDC64727F1689400CD3782 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC64627F1689400CD3782 /* Tests_iOS.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7004466D27FABDDE00E62C53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7004466F27FABDE000E62C53 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		700873F327F282FE00185FB2 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		7071A17827F847A90028C329 /* macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "macOS-Info.plist"; sourceTree = "<group>"; };
 		70CDC62E27F1689300CD3782 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				70CDC62E27F1689300CD3782 /* MainApp.swift */,
 				70CDC63027F1689400CD3782 /* Assets.xcassets */,
 				700873F327F282FE00185FB2 /* InfoPlist.strings */,
+				7004466E27FABDDE00E62C53 /* Localizable.strings */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CDC65A27F1689400CD3782 /* Assets.xcassets in Resources */,
+				7004466B27FABDDE00E62C53 /* Localizable.strings in Resources */,
 				700873F427F282FE00185FB2 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70CDC65B27F1689400CD3782 /* Assets.xcassets in Resources */,
+				7004466C27FABDDE00E62C53 /* Localizable.strings in Resources */,
 				700873F527F282FE00185FB2 /* InfoPlist.strings in Resources */,
 				70E99DF627FA7C6500A83B32 /* MainMenu.xib in Resources */,
 			);
@@ -449,6 +456,18 @@
 			targetProxy = 70CDC64F27F1689400CD3782 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7004466E27FABDDE00E62C53 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7004466D27FABDDE00E62C53 /* en */,
+				7004466F27FABDE000E62C53 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		70CDC65C27F1689400CD3782 /* Debug */ = {
