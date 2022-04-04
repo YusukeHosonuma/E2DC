@@ -19,6 +19,7 @@
 		70CDC65B27F1689400CD3782 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70CDC63027F1689400CD3782 /* Assets.xcassets */; };
 		70CDC66C27F169C700CD3782 /* Root in Frameworks */ = {isa = PBXBuildFile; productRef = 70CDC66B27F169C700CD3782 /* Root */; };
 		70CDC66E27F169CE00CD3782 /* Root in Frameworks */ = {isa = PBXBuildFile; productRef = 70CDC66D27F169CE00CD3782 /* Root */; };
+		70E99DF627FA7C6500A83B32 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E99DF527FA7C6500A83B32 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		70CDC64E27F1689400CD3782 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CDC65227F1689400CD3782 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		70CDC65427F1689400CD3782 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		70E99DF527FA7C6500A83B32 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				7071A17827F847A90028C329 /* macOS-Info.plist */,
 				70CDC63D27F1689400CD3782 /* macOS.entitlements */,
+				70E99DF527FA7C6500A83B32 /* MainMenu.xib */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				70CDC65B27F1689400CD3782 /* Assets.xcassets in Resources */,
 				700873F527F282FE00185FB2 /* InfoPlist.strings in Resources */,
+				70E99DF627FA7C6500A83B32 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

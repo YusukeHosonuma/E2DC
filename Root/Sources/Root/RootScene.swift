@@ -89,7 +89,7 @@ private final class StatusBarController<Content: View> {
         // Load nib:
         // http://cocoadays.blogspot.com/2010/11/mac-nib.html
         //
-        let nib = NSNib(nibNamed: "MainMenu", bundle: .module)!
+        let nib = NSNib(nibNamed: "MainMenu", bundle: Bundle.main)!
         var topLevelArray: NSArray?
         nib.instantiate(withOwner: nil, topLevelObjects: &topLevelArray)
         let results = topLevelArray as! [Any]
