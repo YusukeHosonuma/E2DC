@@ -111,6 +111,7 @@ struct RootView: View {
                 } label: {
                     Image(symbol: "􀈂")
                         .font(.system(size: 20))
+                        .disabled(convertedText.isEmpty)
                 }
                 #endif
             }
