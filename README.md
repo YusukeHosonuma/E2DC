@@ -15,6 +15,7 @@ https://user-images.githubusercontent.com/2990285/160504047-f336470b-011c-489b-b
 ## Development
 
 ```bash
+bundle install
 brew install mint
 mint bootstrap
 ```
