@@ -100,14 +100,21 @@ struct RootView: View {
             //
             #if os(macOS)
             HStack {
+                Menu {
+                    Button("About", action: onTapInfo)
+                    Button("Quit", action: onTapQuit)
+                } label: {
+                    Image(symbol: "􀣌")
+                        .font(.title)
+                }
+                .menuStyle(.borderlessButton)
+                .menuIndicator(.hidden)
+                .frame(width: 120)
+
+                Spacer()
+
                 Toggle(L10n.automaticallyLaunchDeeplAtPasted, isOn: $isAutomaticallyLaunchDeepL)
                     .toggleStyle(.checkbox)
-                Spacer()
-                Button(action: onTapInfo) {
-                    Image(symbol: "􀅴")
-                }
-                .font(.title2)
-                .buttonStyle(.link)
             }
             #endif
         }
@@ -131,6 +138,10 @@ struct RootView: View {
 
     private func onTapInfo() {
         showAboutPanelHandler()
+    }
+
+    private func onTapQuit() {
+        NSApplication.shared.terminate(nil)
     }
     #endif
 
