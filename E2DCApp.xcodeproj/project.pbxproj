@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		7004466B27FABDDE00E62C53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7004466E27FABDDE00E62C53 /* Localizable.strings */; };
 		7004466C27FABDDE00E62C53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7004466E27FABDDE00E62C53 /* Localizable.strings */; };
+		7004467127FADA5900E62C53 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004467027FADA5900E62C53 /* SnapshotHelper.swift */; };
 		700873F427F282FE00185FB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 700873F327F282FE00185FB2 /* InfoPlist.strings */; };
 		700873F527F282FE00185FB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 700873F327F282FE00185FB2 /* InfoPlist.strings */; };
-		70CDC64727F1689400CD3782 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC64627F1689400CD3782 /* Tests_iOS.swift */; };
-		70CDC64927F1689400CD3782 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC64827F1689400CD3782 /* Tests_iOSLaunchTests.swift */; };
+		70CDC64927F1689400CD3782 /* FastlaneSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC64827F1689400CD3782 /* FastlaneSnapshotTests.swift */; };
 		70CDC65327F1689400CD3782 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC65227F1689400CD3782 /* Tests_macOS.swift */; };
 		70CDC65527F1689400CD3782 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC65427F1689400CD3782 /* Tests_macOSLaunchTests.swift */; };
 		70CDC65627F1689400CD3782 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CDC62E27F1689300CD3782 /* MainApp.swift */; };
@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		7004466D27FABDDE00E62C53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7004466F27FABDE000E62C53 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7004467027FADA5900E62C53 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		700873F327F282FE00185FB2 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		7071A17827F847A90028C329 /* macOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "macOS-Info.plist"; sourceTree = "<group>"; };
 		70CDC62E27F1689300CD3782 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
@@ -52,8 +53,7 @@
 		70CDC63B27F1689400CD3782 /* E2DC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = E2DC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CDC63D27F1689400CD3782 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		70CDC64227F1689400CD3782 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70CDC64627F1689400CD3782 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		70CDC64827F1689400CD3782 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		70CDC64827F1689400CD3782 /* FastlaneSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastlaneSnapshotTests.swift; sourceTree = "<group>"; };
 		70CDC64E27F1689400CD3782 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70CDC65227F1689400CD3782 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		70CDC65427F1689400CD3782 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 		70CDC64527F1689400CD3782 /* Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
-				70CDC64627F1689400CD3782 /* Tests_iOS.swift */,
-				70CDC64827F1689400CD3782 /* Tests_iOSLaunchTests.swift */,
+				7004467027FADA5900E62C53 /* SnapshotHelper.swift */,
+				70CDC64827F1689400CD3782 /* FastlaneSnapshotTests.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -428,8 +428,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70CDC64927F1689400CD3782 /* Tests_iOSLaunchTests.swift in Sources */,
-				70CDC64727F1689400CD3782 /* Tests_iOS.swift in Sources */,
+				70CDC64927F1689400CD3782 /* FastlaneSnapshotTests.swift in Sources */,
+				7004467127FADA5900E62C53 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,11 +712,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.penginmura.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "E2DCApp (iOS)";
+				TEST_TARGET_NAME = "E2DC (iOS)";
 			};
 			name = Debug;
 		};
@@ -732,11 +733,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.penginmura.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "E2DCApp (iOS)";
+				TEST_TARGET_NAME = "E2DC (iOS)";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
