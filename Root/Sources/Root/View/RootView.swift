@@ -73,11 +73,11 @@ struct RootView: View {
                 Group {
                     if sourceText.isEmpty {
                         Button(action: onTapPasteFromClipboard) {
-                            Label("Paste", symbol: "􀉃")
+                            Label(L10n.paste, symbol: "􀉃")
                         }
                     } else {
                         Button(action: onTapClear) {
-                            Label("Clear", symbol: "􀆄")
+                            Label(L10n.clear, symbol: "􀆄")
                         }
                     }
                 }
@@ -87,8 +87,9 @@ struct RootView: View {
             TextEdit(L10n.pleasePasteDocumentationComment, text: $sourceText, font: editorFont)
                 .foregroundColor(editorFontColor)
 
+            #if os(iOS)
             Divider()
-                .padding(.bottom)
+            #endif
 
             //
             // Destination
@@ -113,6 +114,8 @@ struct RootView: View {
                 }
                 #endif
             }
+            .padding(.top)
+
             TextEdit(text: .constant(convertedText), font: editorFont)
                 .foregroundColor(editorFontColor)
 
@@ -122,8 +125,9 @@ struct RootView: View {
             #if os(macOS)
             HStack {
                 Menu {
-                    Button("About", action: onTapInfo)
-                    Button("Quit", action: onTapQuit)
+                    Button(L10n.about + "...", action: onTapInfo)
+                    Divider()
+                    Button(L10n.quit, action: onTapQuit)
                 } label: {
                     Image(symbol: "􀣌")
                         .font(.title)

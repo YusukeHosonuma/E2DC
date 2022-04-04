@@ -10,7 +10,7 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-  /// About E2DC
+  /// About
   internal static let about = L10n.tr("Localizable", "about")
   /// Automatically launch DeepL at pasted
   internal static let automaticallyLaunchDeeplAtPasted = L10n.tr("Localizable", "automatically_launch_deepl_at_pasted")
@@ -22,8 +22,12 @@ internal enum L10n {
   internal static let copyToDeepl = L10n.tr("Localizable", "copy_to_deepl")
   /// Destination
   internal static let destination = L10n.tr("Localizable", "destination")
+  /// Paste
+  internal static let paste = L10n.tr("Localizable", "paste")
   /// Please paste documentation comment.
   internal static let pleasePasteDocumentationComment = L10n.tr("Localizable", "please_paste_documentation_comment")
+  /// Quit
+  internal static let quit = L10n.tr("Localizable", "quit")
   /// Source
   internal static let source = L10n.tr("Localizable", "source")
   /// Version
