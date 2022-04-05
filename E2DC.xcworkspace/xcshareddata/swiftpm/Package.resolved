@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/YusukeHosonuma/SwiftUICommon.git",
       "state" : {
-        "revision" : "bbd9d3fb247d4d67de699251209f65ea056c0a6f",
-        "version" : "0.1.0"
+        "revision" : "b375a35ffec7d4493708b2430ff6993f38db5596",
+        "version" : "0.1.1"
       }
     }
   ],
