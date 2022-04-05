@@ -15,12 +15,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/YusukeHosonuma/SFReadableSymbols.git", from: "1.0.0"),
+        .package(url: "https://github.com/YusukeHosonuma/SwiftUICommon.git", from: "0.1.0"),
     ],
     targets: [
         .target(
             name: "Root",
             dependencies: [
                 "SFReadableSymbols",
+                "SwiftUICommon",
             ],
             resources: [.process("Resources")]
         ),
