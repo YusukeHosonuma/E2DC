@@ -8,6 +8,7 @@
 import Combine
 import SFReadableSymbols
 import SwiftUI
+import SwiftUICommon
 
 struct RootView: View {
     #if os(macOS)

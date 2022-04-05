@@ -8,6 +8,15 @@
         "revision" : "e7d4c2a28ff151774ae50234632a9a1c73b658fb",
         "version" : "1.0.0"
       }
+    },
+    {
+      "identity" : "swiftuicommon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/YusukeHosonuma/SwiftUICommon.git",
+      "state" : {
+        "revision" : "b375a35ffec7d4493708b2430ff6993f38db5596",
+        "version" : "0.1.1"
+      }
     }
   ],
   "version" : 2

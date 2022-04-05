@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICommon
 
 public struct RootScene: Scene {
     #if os(macOS)
@@ -46,28 +47,14 @@ public struct RootScene: Scene {
 //
 #if os(macOS)
 private class AppDelegate: NSObject, NSApplicationDelegate {
-    private var aboutBoxWindowController: NSWindowController?
-    private var statusBar: StatusBarController<RootView>?
-
-    func showAboutPanel() {
-        if aboutBoxWindowController == nil {
-            let styleMask: NSWindow.StyleMask = [.closable, .miniaturizable, /* .resizable,*/ .titled]
-            let window = NSWindow()
-            window.styleMask = styleMask
-            window.title = ""
-            window.contentView = NSHostingView(rootView: AboutView())
-            window.center()
-            aboutBoxWindowController = NSWindowController(window: window)
-        }
-
-        aboutBoxWindowController?.showWindow(aboutBoxWindowController?.window)
-    }
+    private let aboutWindow = WindowController(content: AboutView())
+    private var statusBar: StatusBarController<RootView>!
 
     // MARK: Status bar app
 
     func applicationDidFinishLaunching(_: Notification) {
         statusBar = .init(
-            RootView(showAboutPanelHandler: showAboutPanel),
+            RootView(showAboutPanelHandler: { [weak self] in self?.aboutWindow.show() }),
             width: 440,
             height: 360,
             image: Bundle.module.image(forResource: "status-bar-icon")!
